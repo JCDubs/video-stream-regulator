@@ -9,7 +9,8 @@ module.exports = {
     ],
     globals: {
         '__dirname': true,
-        process: true
+        process: true,
+        require: true
     },
     rules: {
         quotes: ["error", "single", {
