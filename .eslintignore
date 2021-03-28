@@ -5,3 +5,5 @@ webpack.config.js
 *spec.*
 *config.*
 .eslintrc.js
+serverless.ts
+cucumber.js
