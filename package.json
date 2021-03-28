@@ -7,8 +7,12 @@
     "start": "sls offline -s dev",
     "deploy": "sls deploy",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "engines": {
     "node": ">=14.15.0"
   },
@@ -22,8 +26,12 @@
     "@types/aws-lambda": "^8.10.71",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.25",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
+    "eslint": "^7.23.0",
     "jest": "^26.6.3",
     "json-schema-to-ts": "^1.5.0",
+    "pre-commit": "^1.2.2",
     "serverless": "^2.23.0",
     "serverless-offline": "^6.9.0",
     "serverless-webpack": "^5.3.5",
