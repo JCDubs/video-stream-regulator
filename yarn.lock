@@ -1537,6 +1537,22 @@
   resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
   integrity sha1-5IbQ2XOW15vu3QpuM/RTT/a0lz4=
 
+"@types/pino-std-serializers@*":
+  version "2.4.1"
+  resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/@types/pino-std-serializers/-/pino-std-serializers-2.4.1.tgz#f8bd52a209c8b3c97d1533b1ba27f57c816382bf"
+  integrity sha1-+L1SognIs8l9FTOxuif1fIFjgr8=
+  dependencies:
+    "@types/node" "*"
+
+"@types/pino@^6.3.6":
+  version "6.3.6"
+  resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/@types/pino/-/pino-6.3.6.tgz#3aa928bcbd30dc0c6a0ec2e9302cabd5dee6e832"
+  integrity sha1-OqkovL0w3AxqDsLpMCyr1d7m6DI=
+  dependencies:
+    "@types/node" "*"
+    "@types/pino-std-serializers" "*"
+    "@types/sonic-boom" "*"
+
 "@types/prettier@^2.0.0":
   version "2.2.3"
   resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/@types/prettier/-/prettier-2.2.3.tgz#ef65165aea2924c9359205bf748865b8881753c0"
@@ -1570,6 +1586,13 @@
   version "0.12.0"
   resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/@types/retry/-/retry-0.12.0.tgz#2b35eccfcee7d38cd72ad99232fbd58bffb3c84d"
   integrity sha1-KzXsz87n04zXKtmSMvvVi/+zyE0=
+
+"@types/sonic-boom@*":
+  version "0.7.0"
+  resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/@types/sonic-boom/-/sonic-boom-0.7.0.tgz#38337036293992a1df65dd3161abddf8fb9b7176"
+  integrity sha1-ODNwNik5kqHfZd0xYavd+PubcXY=
+  dependencies:
+    "@types/node" "*"
 
 "@types/stack-utils@^2.0.0":
   version "2.0.0"
@@ -2133,6 +2156,11 @@ atob@^2.1.2:
   version "2.1.2"
   resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha1-bZUX654DDSQ2ZmZR6GvZ9vE1M8k=
+
+atomic-sleep@^1.0.0:
+  version "1.0.0"
+  resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/atomic-sleep/-/atomic-sleep-1.0.0.tgz#eb85b77a601fc932cfe432c5acd364a9e2c9075b"
+  integrity sha1-64W3emAfyTLP5DLFrNNkqeLJB1s=
 
 aws-sdk@^2.834.0, aws-sdk@^2.869.0:
   version "2.874.0"
@@ -4139,7 +4167,12 @@ fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.6:
   resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
-fast-safe-stringify@^2.0.4:
+fast-redact@^3.0.0:
+  version "3.0.0"
+  resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/fast-redact/-/fast-redact-3.0.0.tgz#ac2f9e36c9f4976f5db9fb18c6ffbaf308cf316d"
+  integrity sha1-rC+eNsn0l29dufsYxv+68wjPMW0=
+
+fast-safe-stringify@^2.0.4, fast-safe-stringify@^2.0.7:
   version "2.0.7"
   resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/fast-safe-stringify/-/fast-safe-stringify-2.0.7.tgz#124aa885899261f68aedb42a7c080de9da608743"
   integrity sha1-EkqohYmSYfaK7bQqfAgN6dpgh0M=
@@ -4290,6 +4323,11 @@ flat@^5.0.2:
   version "5.0.2"
   resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/flat/-/flat-5.0.2.tgz#8ca6fe332069ffa9d324c327198c598259ceb241"
   integrity sha1-jKb+MyBp/6nTJMMnGYxZglnOskE=
+
+flatstr@^1.0.12:
+  version "1.0.12"
+  resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/flatstr/-/flatstr-1.0.12.tgz#c2ba6a08173edbb6c9640e3055b95e287ceb5931"
+  integrity sha1-wrpqCBc+27bJZA4wVbleKHzrWTE=
 
 flatted@^2.0.1:
   version "2.0.2"
@@ -7304,6 +7342,23 @@ pinkie@^2.0.0:
   resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
 
+pino-std-serializers@^3.1.0:
+  version "3.2.0"
+  resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/pino-std-serializers/-/pino-std-serializers-3.2.0.tgz#b56487c402d882eb96cd67c257868016b61ad671"
+  integrity sha1-tWSHxALYguuWzWfCV4aAFrYa1nE=
+
+pino@^6.11.2:
+  version "6.11.2"
+  resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/pino/-/pino-6.11.2.tgz#2f3d119c526651aab4ec3d280844785d52d0b690"
+  integrity sha1-Lz0RnFJmUaq07D0oCER4XVLQtpA=
+  dependencies:
+    fast-redact "^3.0.0"
+    fast-safe-stringify "^2.0.7"
+    flatstr "^1.0.12"
+    pino-std-serializers "^3.1.0"
+    quick-format-unescaped "4.0.1"
+    sonic-boom "^1.0.2"
+
 pirates@^4.0.1:
   version "4.0.1"
   resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/pirates/-/pirates-4.0.1.tgz#643a92caf894566f91b2b986d2c66950a8e2fb87"
@@ -7556,6 +7611,11 @@ queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha1-SSkii7xyTfrEPg77BYyve2z7YkM=
+
+quick-format-unescaped@4.0.1:
+  version "4.0.1"
+  resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/quick-format-unescaped/-/quick-format-unescaped-4.0.1.tgz#437a5ea1a0b61deb7605f8ab6a8fd3858dbeb701"
+  integrity sha1-Q3peoaC2Het2Bfirao/ThY2+twE=
 
 quick-lru@^5.1.1:
   version "5.1.1"
@@ -8351,6 +8411,14 @@ socket.io-parser@~3.3.0:
     component-emitter "~1.3.0"
     debug "~3.1.0"
     isarray "2.0.1"
+
+sonic-boom@^1.0.2:
+  version "1.4.0"
+  resolved "https://artifactory3-eu1.moneysupermarket.com/artifactory/api/npm/npm-repo/sonic-boom/-/sonic-boom-1.4.0.tgz#d6d35196c32609b46193145afc1174a8c692d21e"
+  integrity sha1-1tNRlsMmCbRhkxRa/BF0qMaS0h4=
+  dependencies:
+    atomic-sleep "^1.0.0"
+    flatstr "^1.0.12"
 
 sort-keys-length@^1.0.0:
   version "1.0.1"
