@@ -10,8 +10,19 @@ const serverlessConfiguration: AWS = {
       webpackConfig: './webpack.config.js',
       includeModules: true,
     },
+    dynamodb: {
+      stages: ['dev'],
+      migration: {
+        dir: "dynamodbMigrations"
+      },
+      start: {
+        port: "8000",
+        inMemory: true,
+        migration: true
+      }
+    }
   },
-  plugins: ['serverless-webpack', 'serverless-offline'],
+  plugins: ['serverless-webpack', 'serverless-offline', 'serverless-dynamodb-local'],
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
@@ -23,10 +34,64 @@ const serverlessConfiguration: AWS = {
     environment: {
       LOG_LEVEL: 'info',
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+      DYNAMODB_TABLE: 'streams'
     },
     lambdaHashingVersion: '20201221',
+    iamRoleStatements: [{
+      Effect: 'Allow',
+      Action: [
+        'dynamodb:Query',
+        'dynamodb:GetItem',
+        'dynamodb:PutItem',
+        'dynamodb:UpdateItem',
+        'dynamodb:DeleteItem'
+      ],
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+    }]
   },
   functions: { hello },
+  resources: {
+    Resources: {
+      streamsTable: {
+        Type: 'AWS::DynamoDB::Table',
+        Properties: {
+          TableName: 'streams',
+          AttributeDefinitions: [{
+            AttributeName: 'streamId',
+            AttributeType: 'S'
+          },
+          {
+            AttributeName: 'userId',
+            AttributeType: 'S'
+          }],
+          KeySchema:[{
+            AttributeName: 'streamId',
+            KeyType: 'HASH'
+          }],
+          GlobalSecondaryIndexes:[
+            {
+              IndexName: "streamUser",
+              KeySchema:[{
+                AttributeName: 'userId',
+                KeyType: 'HASH'
+              }],
+              Projection: {
+                ProjectionType: 'ALL'
+              },
+              ProvisionedThroughput: {
+                ReadCapacityUnits: 1,
+                WriteCapacityUnits: 1
+              }
+            }
+          ],
+          ProvisionedThroughput: {
+            ReadCapacityUnits: 1,
+            WriteCapacityUnits: 1
+          }
+        }
+      }
+    }
+  }
 };
 
 module.exports = serverlessConfiguration;
