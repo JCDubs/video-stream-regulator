@@ -3,7 +3,10 @@
 echo "Starting Video Stream Service Serverless Application"
 
 rm -rf out.log
+yarn db:local >> out.log & 
+dynamodbPid=$!
 yarn start >> out.log &
+lambdaPid=$!
 
 # Wait for service to start; this is an invalid request which should always return 400 when service is running
 RETRY=40
@@ -22,10 +25,8 @@ echo "Sarting e2e tests..."
 # Execute Acceptance Tests
 yarn cucumber
 
-# # Capture the PID of the serverless process
-read pid <<< $(ps | grep ".bin/sls offline" | grep -v grep | awk '{print $1}')
-
 # # Kill the serverless process
-echo "Tearing down Video Stream Service Serverless Application [" $pid "]"
-kill $pid
+echo "Tearing down Video Stream Service Serverless Application"
+kill $dynamodbPid
+kill $lambdaPid
 exit 0
