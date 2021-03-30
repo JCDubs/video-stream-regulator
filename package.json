@@ -8,11 +8,12 @@
     "scripts": {
         "start": "sls offline -s dev",
         "deploy": "sls deploy",
-        "test": "jest tests/unit",
+        "test:unit": "jest tests/unit",
         "test:watch": "jest tests/unit --watch",
         "test:e2e": "./bin/run_e2e.sh",
         "cucumber": "./node_modules/.bin/cucumber-js -p default",
-        "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+        "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+        "db:local": "sls dynamodb start --migrate --seed=dev"
     },
     "pre-commit": [
         "lint"

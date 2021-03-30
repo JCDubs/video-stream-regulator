@@ -12,13 +12,18 @@ const serverlessConfiguration: AWS = {
     },
     dynamodb: {
       stages: ['dev'],
-      migration: {
-        dir: "dynamodbMigrations"
-      },
       start: {
         port: "8000",
         inMemory: true,
         migration: true
+      },
+      seed: {
+        dev: {
+          sources: [{
+            table: "${self:provider.environment.DYNAMODB_TABLE}",
+            sources: ['./streamSeed.json']
+          }]
+        }
       }
     }
   },
@@ -46,7 +51,7 @@ const serverlessConfiguration: AWS = {
         'dynamodb:UpdateItem',
         'dynamodb:DeleteItem'
       ],
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+      Resource: 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}'
     }]
   },
   functions: { hello },
@@ -55,7 +60,7 @@ const serverlessConfiguration: AWS = {
       streamsTable: {
         Type: 'AWS::DynamoDB::Table',
         Properties: {
-          TableName: 'streams',
+          TableName: "${self:provider.environment.DYNAMODB_TABLE}",
           AttributeDefinitions: [{
             AttributeName: 'streamId',
             AttributeType: 'S'

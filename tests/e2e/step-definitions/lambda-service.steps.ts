@@ -1,10 +1,10 @@
 import { binding, given, when, then, before } from 'cucumber-tsflow'
 import { expect } from 'chai'
 import axios from 'axios'
+import { logger } from '../../../src/factory/LoggerFactory'
 
 @binding()
 export class LambdaServiceSteps {
-  private requestBody: any
   private responseBody: any
   private port: number
   private host: string
@@ -12,7 +12,6 @@ export class LambdaServiceSteps {
 
   @before()
   public beforeEach() {
-    this.requestBody = null
     this.host = null
     this.port = null
     this.response = null
@@ -25,18 +24,15 @@ export class LambdaServiceSteps {
     this.port = port
   }
 
-  @given(/I set the request body as "([^"]*)"/)
-  public givenISetTheRequestBody(requestJsonBodyFilePath: string) {
-    const content = require(`../resources/${requestJsonBodyFilePath}`)
-    this.requestBody = JSON.stringify(content)
-  }
-
-  @when(/I POST to "([^"]*)"/)
-  public async postTo(endpoint: string) {
-    this.response = await axios.post(`http://${this.host}:${this.port}${endpoint}`, this.requestBody, { headers: { 'content-type': 'application/json' } })
+  @when(/I GET "([^"]*)"/)
+  public async get(endpoint: string) {
+    this.response = await axios.get(`http://${this.host}:${this.port}${endpoint}`, { headers: { 'content-type': 'application/json' } })
+    .catch(error => logger.error(`Error thrown making GET request to http://${this.host}:${this.port}${endpoint}`, error))
     expect(this.response).to.not.be.null
-    expect(this.response.data).to.not.be.null
-    this.responseBody = this.response.data
+    if (this.response && this.response.data) {
+      expect(this.response.data).to.not.be.null
+      this.responseBody = this.response.data
+    }
   }
 
   @then(/response code should be (\d*)/)
@@ -46,6 +42,6 @@ export class LambdaServiceSteps {
 
   @then(/response body key "([^"]*)" should contain value "([^"]*)"/)
   public responseBodyContains(bodyKey: string, bodyValue: string) {
-    expect(this.responseBody[bodyKey]).to.deep.equal(bodyValue)
+    expect(this.responseBody[bodyKey].toString()).to.deep.equal(bodyValue)
   }
 }
