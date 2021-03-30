@@ -4,13 +4,13 @@ import {logger} from '../factory/LoggerFactory'
 
 export default class StreamsService {
 
-    public async exceedsAvailableStreams(userId: string):Promise<boolean> {
+    public async getNumberOfStreams(userId: string):Promise<number> {
         logger.info(`Executing dynamodb query with userId of "${userId}".`)        
         let result = await dynamodb.doc.query(this.constructPrams(userId)).promise()
         logger.debug(`Recieved dynamodb result`, result)
-        const exceeds = result && result.Count >= 3
-        logger.info(`User with id "${userId}" has ${!exceeds ? 'not' : ''} exceeded the possible number of streams.`)
-        return exceeds
+        const numOfStreams = result && result.Count ? result.Count : 0
+        logger.info(`User with id "${userId}" is currently watching ${numOfStreams} streams.`)
+        return numOfStreams
     }
 
     private constructPrams(userId: string):DocumentClient.QueryInput {

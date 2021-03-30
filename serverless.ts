@@ -37,9 +37,10 @@ const serverlessConfiguration: AWS = {
       shouldStartNameWithService: true,
     },
     environment: {
-      LOG_LEVEL: 'info',
+      LOG_LEVEL: 'warn',
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
-      DYNAMODB_TABLE: 'streams'
+      DYNAMODB_TABLE: 'streams',
+      MAX_STREAMS: '3'
     },
     lambdaHashingVersion: '20201221',
     iamRoleStatements: [{

@@ -7,13 +7,21 @@ import {streamService} from '../../../src/service/StreamsService'
 
 describe('StreamService test', () => {
 
-    test('exceedsAvailableStreams returns true when streams is three', async () => {
-        (dynamodb.doc.query as jest.Mock).mockReturnValue({promise: jest.fn(() => {return {Count:3}})}) //.mockReturnValue({Count: 3})
-        expect(await streamService.exceedsAvailableStreams('test-user-id')).toBeTruthy()
+    test('getNumberOfStreams returns expected number', async () => {
+        const numOfStreams = 3;
+        (dynamodb.doc.query as jest.Mock).mockReturnValue({promise: jest.fn(() => {return {Count:numOfStreams}})})
+        expect(await streamService.getNumberOfStreams('test-user-id')).toEqual(numOfStreams)
     })
 
-    test('exceedsAvailableStreams returns false when streams is under three', async () => {
-        (dynamodb.doc.query as jest.Mock).mockReturnValue({promise: jest.fn(() => {return {Count:2}})}) //.mockReturnValue({Count: 3})
-        expect(await streamService.exceedsAvailableStreams('test-user-id')).toBeFalsy()
+    test('getNumberOfStreams returns an empty response', async () => {
+        const numOfStreams = 0;
+        (dynamodb.doc.query as jest.Mock).mockReturnValue({promise: jest.fn(() => {return null})})
+        expect(await streamService.getNumberOfStreams('test-user-id')).toEqual(numOfStreams)
+    })
+
+    test('getNumberOfStreams returns a null Count in the response', async () => {
+        const numOfStreams = 0;
+        (dynamodb.doc.query as jest.Mock).mockReturnValue({promise: jest.fn(() => {return {}})})
+        expect(await streamService.getNumberOfStreams('test-user-id')).toEqual(numOfStreams)
     })
 })
