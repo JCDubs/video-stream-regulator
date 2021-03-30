@@ -1,9 +1,9 @@
 {
     "name": "video-stream-regulator",
     "version": "1.0.0",
-    "description": "Serverless aws-nodejs-typescript template",
+    "description": "Lambda service to determine whether a user has reached their video stream allowance",
     "main": "serverless.ts",
-    "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
+    "author": "Jason Conway-Williams",
     "license": "MIT",
     "scripts": {
         "start": "sls offline -s dev",

@@ -1,4 +1,4 @@
-import { handlerPath } from '../../../src/libs/handlerResolver';
+import { handlerPath } from '@libs/handlerResolver';
 
 describe('handlerResolver tests', () => {
 

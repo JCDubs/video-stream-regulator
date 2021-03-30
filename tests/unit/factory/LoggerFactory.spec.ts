@@ -1,4 +1,4 @@
-import Logger, { logger } from '../../../src/factory/LoggerFactory'
+import Logger, { logger } from '@factory/LoggerFactory'
 
 describe('LoggerFactory test', () => {
 

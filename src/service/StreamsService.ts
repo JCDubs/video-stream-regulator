@@ -1,15 +1,15 @@
 import dynamodb from 'serverless-dynamodb-client'
 import { DocumentClient } from 'aws-sdk/lib/dynamodb/document_client'
-import {logger} from '../factory/LoggerFactory'
+import {logger} from '@factory/LoggerFactory'
 
 export default class StreamsService {
 
     public async getNumberOfStreams(userId: string):Promise<number> {
-        logger.info(`Executing dynamodb query with userId of "${userId}".`)        
+        logger.info(`Executing dynamodb query with userId of '${userId}'`)        
         let result = await dynamodb.doc.query(this.constructPrams(userId)).promise()
-        logger.debug(`Recieved dynamodb result`, result)
+        logger.debug({'DynamoDB result': result})
         const numOfStreams = result && result.Count ? result.Count : 0
-        logger.info(`User with id "${userId}" is currently watching ${numOfStreams} streams.`)
+        logger.info(`User with id '${userId}' is currently watching '${numOfStreams}' streams`)
         return numOfStreams
     }
 
@@ -21,7 +21,7 @@ export default class StreamsService {
             ExpressionAttributeValues: {':userIdValue': userId},
             Select:'COUNT'
         }
-        logger.debug('DynamoDB query params consist of', params)
+        logger.debug({'Query params': params})
         return params
     }
 }

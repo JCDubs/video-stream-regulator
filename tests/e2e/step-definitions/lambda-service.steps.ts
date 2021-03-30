@@ -26,8 +26,8 @@ export class LambdaServiceSteps {
 
   @when(/I GET "([^"]*)"/)
   public async get(endpoint: string) {
-    this.response = await axios.get(`http://${this.host}:${this.port}${endpoint}`, { headers: { 'content-type': 'application/json' } })
-    .catch(error => logger.error(`Error thrown making GET request to http://${this.host}:${this.port}${endpoint}`, error))
+    this.response = await axios.get(`http://${this.host}:${this.port}/dev${endpoint}`, { headers: { 'content-type': 'application/json' } })
+    .catch(error => logger.error(`Error thrown making GET request to http://${this.host}:${this.port}/dev${endpoint}`, error))
     expect(this.response).to.not.be.null
     if (this.response && this.response.data) {
       expect(this.response.data).to.not.be.null
