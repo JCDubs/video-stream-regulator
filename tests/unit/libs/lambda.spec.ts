@@ -1,6 +1,6 @@
 jest.mock('@middy/core')
 jest.mock('@middy/http-json-body-parser')
-import { middyfy } from "../../../src/libs/lambda"
+import { middyfy } from "@libs/lambda"
 import middy from "@middy/core"
 import middyJsonBodyParser from "@middy/http-json-body-parser"
 

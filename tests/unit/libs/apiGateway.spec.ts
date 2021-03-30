@@ -1,4 +1,4 @@
-import { formatJSONResponse } from '../../../src/libs/apiGateway';
+import { formatJSONResponse } from '@libs/apiGateway';
 
 describe('apiGateway tests', () => {
 

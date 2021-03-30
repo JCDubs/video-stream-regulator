@@ -3,7 +3,7 @@ jest.mock('serverless-dynamodb-client', () => ({
     default: {doc:{query: jest.fn() }}
 }))
 import dynamodb from 'serverless-dynamodb-client'
-import {streamService} from '../../../src/service/StreamsService'
+import {streamService} from '@service/StreamsService'
 
 describe('StreamService test', () => {
 

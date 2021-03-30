@@ -1,6 +1,6 @@
 import type { AWS } from '@serverless/typescript';
 
-import hello from '@functions/hello';
+import check from '@functions/check';
 
 const serverlessConfiguration: AWS = {
   service: 'video-stream-regulator',
@@ -37,7 +37,7 @@ const serverlessConfiguration: AWS = {
       shouldStartNameWithService: true,
     },
     environment: {
-      LOG_LEVEL: 'warn',
+      LOG_LEVEL: 'debug',
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       DYNAMODB_TABLE: 'streams',
       MAX_STREAMS: '3'
@@ -55,7 +55,7 @@ const serverlessConfiguration: AWS = {
       Resource: 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}'
     }]
   },
-  functions: { hello },
+  functions: { check },
   resources: {
     Resources: {
       streamsTable: {
