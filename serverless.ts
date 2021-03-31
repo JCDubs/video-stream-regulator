@@ -1,5 +1,4 @@
 import type { AWS } from '@serverless/typescript';
-
 import check from '@functions/check';
 
 const serverlessConfiguration: AWS = {
@@ -45,15 +44,10 @@ const serverlessConfiguration: AWS = {
     lambdaHashingVersion: '20201221',
     iamRoleStatements: [{
       Effect: 'Allow',
-      Action: [
-        'dynamodb:Query',
-        'dynamodb:GetItem',
-        'dynamodb:PutItem',
-        'dynamodb:UpdateItem',
-        'dynamodb:DeleteItem'
-      ],
-      Resource: 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}'
-    }]
+      Action: ['dynamodb:Query'],
+      Resource: 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}*'
+    }
+  ]
   },
   functions: { check },
   resources: {

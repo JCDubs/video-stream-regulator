@@ -6,7 +6,7 @@ export default {
     {
       httpApi: {
         method: 'get',
-        path: 'streams/check/{userId}'
+        path: '/streams/check/{userId}'
       }
     }
   ]
