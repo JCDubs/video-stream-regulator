@@ -62,7 +62,7 @@ The project has been configured to run a local instance of the lambda function a
 
 Once both commands are run, the /streams/check/{userId} GET endpoint will be accessible at http://localhost:3000. The function can be invoked either by terminal, browser or Postman by navigating to the _http://localhost:3000/streams/check/{userId}_ endpoint replacing the _{userId}_ with one of the userId's in the _./streamSeeds.json_ file.
 
-The _./streamSeeds.json_ file contains records to generate the three possible scenarios producable by the /streams/check lambda; a user watching three streams, a user watching less than three streams and a use not watching any streams.
+The _./streamSeeds.json_ file contains records to generate the three possible scenarios producable by the /streams/check lambda; a user watching three streams, a user watching less than three streams and a user not watching any streams.
 
 ## Tests
 
@@ -84,7 +84,7 @@ Doing so will run all unit tests and output the test coverage in the terminal.
 
 ### e2e tests
 
-The end to end tests are located in the _tests/e2e_ directory and have been implememted using [cucumber.js](https://cucumber.io/docs/installation/javascript/). The integration tests can be run by executing the following commands.
+The end to end tests are located in the _tests/e2e_ directory and have been implememted using [cucumber.js](https://cucumber.io/docs/installation/javascript/). The e2e tests can be run by executing the following commands.
 
 #### Using npm
 
